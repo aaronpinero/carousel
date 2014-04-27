@@ -50,45 +50,41 @@ function Carousel(container_id,element_id,item_class) {
 	// method to create the UI elements and apply event handlers to them
 	this.InitUI = function() {
 		this.CheckOverflow();
-		if (this.overflow != undefined && this.overflow > 0) {
-			if (this.UI) {
-				this.SetPosition(this.step_position);
-			}
-			else {
-				this.container.addClass('UIenabled');
-				this.container.append('<ul id="'+this.id+'_nav"></ul>');
-				var x;
-				for (x=0;x<=this.overflow;x++) { jQuery('#'+this.id+'_nav').append('<li class="item"></li>'); }
-				this.SetIndicator();
-				this.UI = true;
-				
-				jQuery('#'+this.id+'_nav').prepend('<li class="switch prev"></li>');
-				jQuery('#'+this.id+'_nav .prev').bind('click',{ob:this},function(e){
-					var s = e.data.ob.step_position - 1;
-					if (s < 0) { s = e.data.ob.overflow; }
-					e.data.ob.SetPosition(s);
-				});
-				
-				jQuery('#'+this.id+'_nav').append('<li class="switch next"></li>');
-				jQuery('#'+this.id+'_nav .next').bind('click',{ob:this},function(e){
-					var s = e.data.ob.step_position + 1;
-					if (s > e.data.ob.overflow) { s = 0; }
-					e.data.ob.SetPosition(s);
-				});
-				
-				var x;
-				for (x=0;x<=this.overflow;x++) {
-					jQuery('#'+this.id+'_nav .item').eq(x).bind('click',{ob:this,index:x},function(e){
-						e.data.ob.SetPosition(e.data.index);
-					});
-				}
-			}
+		if (this.UI && (this.overflow != undefined && this.overflow > 0) && (jQuery('#'+this.id+'_nav .item').length == (this.overflow + 1))) {
+			this.SetPosition(this.step_position);
 		}
 		else {
 			if (this.UI) {
 				this.container.removeClass('UIenabled');
-				this.container.remove(this.id+'_nav');
+				this.container.find('#'+this.id+'_nav').remove();
 				this.UI = false;
+			}
+			this.container.addClass('UIenabled');
+			this.container.append('<ul id="'+this.id+'_nav"></ul>');
+			var x;
+			for (x=0;x<=this.overflow;x++) { jQuery('#'+this.id+'_nav').append('<li class="item"></li>'); }
+			this.SetIndicator();
+			this.UI = true;
+			
+			jQuery('#'+this.id+'_nav').prepend('<li class="switch prev"></li>');
+			jQuery('#'+this.id+'_nav .prev').bind('click',{ob:this},function(e){
+				var s = e.data.ob.step_position - 1;
+				if (s < 0) { s = e.data.ob.overflow; }
+				e.data.ob.SetPosition(s);
+			});
+			
+			jQuery('#'+this.id+'_nav').append('<li class="switch next"></li>');
+			jQuery('#'+this.id+'_nav .next').bind('click',{ob:this},function(e){
+				var s = e.data.ob.step_position + 1;
+				if (s > e.data.ob.overflow) { s = 0; }
+				e.data.ob.SetPosition(s);
+			});
+			
+			var x;
+			for (x=0;x<=this.overflow;x++) {
+				jQuery('#'+this.id+'_nav .item').eq(x).bind('click',{ob:this,index:x},function(e){
+					e.data.ob.SetPosition(e.data.index);
+				});
 			}
 		}
 	};
