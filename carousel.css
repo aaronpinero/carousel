@@ -1,0 +1,25 @@
+.c-container {
+  display: block;
+  overflow: hidden;
+  position: relative;
+  width: 100%; }
+
+.c-element {
+  display: block;
+  flex-wrap: nowrap;
+  font-size: 0;
+  left: 0;
+  position: relative;
+  white-space: nowrap;
+  transition: all 500ms ease-in-out;
+  width: 100%; }
+
+.c-item {
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: unset;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: hidden;
+  text-indent: 0px;
+  width: 50%; }

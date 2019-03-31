@@ -11,7 +11,7 @@ Why?
 There are a million scripts out there for creating a carousel on we website. Why write another one?
 
 * I want a carousel that is truly responsive.
-* I want a carousel that doesn't come with it's own stylesheet. I want to create my own style.
+* I want a carousel that doesn't come with it's own styles. I want to create my own.
 * I want a carousel to handle more than just images.
 * I want a carousel that will work with my HTML's class and id attributes.
 * I want a carousel that uses a simple, easy to understand JavaScript.
@@ -24,9 +24,9 @@ How It Works
 
 The script contains a constructor function for a Carousel. The function accepts three arguments:
 
-* the id attribute for the carousel container
-* the id attribute for the carousel item list
-* the class attribute assigned to each item
+* the selector for the carousel container
+* the selector for the carousel item list
+* the selector assigned to each item
 
 The container serves as the carousel window, showing one part of the carousel ribbon at a time. The container is an HTML element with the display style "block" and overflow style "hidden".
 
@@ -43,4 +43,4 @@ The percentage width of each item determines how many items are visible in the c
 
 The script generates an unordered HTML list, appended to the container element. The first list item is the previous button. The last list item is the next button. In between are 'dots' indicating how many steps (sets of 1 or more items) are in the ribbon. The script assigns event handlers to each list item step back, step forward, or skip to a specific step as appropriate.
 
-No style is applied to the carousel through the JavaScript. It is up to you to provide all of the necessary styling.
+A few styles are applied to the carousel (via classes when the carousel is created) to create the bare minimum of carousel behavior. The rest of the styles are up to you.

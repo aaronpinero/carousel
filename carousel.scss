@@ -1,0 +1,26 @@
+.c-container {
+  display:block;
+  overflow:hidden;
+  position:relative;
+  width:100%;
+}
+.c-element {
+  display:block;
+  flex-wrap:nowrap;
+  font-size:0; // eliminate space between inline block elements;
+  left:0;
+  position:relative;
+  white-space:nowrap;
+  transition:all 500ms ease-in-out;
+  width:100%;
+}
+.c-item {
+  box-sizing:border-box;
+  display:inline-block;
+  font-size:unset; // so the font size, set on the element, will not be zero inside each item
+  margin-left:0;
+  margin-right:0;
+  overflow:hidden;
+  text-indent:0px; // because text indent is used to "rotate" the carousel, we need to set the indent inside each item to zero
+  width:50%;
+}

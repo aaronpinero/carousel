@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="../carousel.css">
   <meta name="theme-color" content="#fafafa">
 </head>
 
@@ -17,19 +18,25 @@
   <section class="carousel">
     <ul class="carousel-contents">
       <li class="carousel-item"><img src="http://placeimg.com/640/360/any"></li>
-      <li class="carousel-item"><img src="http://placeimg.com/480/360/any"></li>
-      <li class="carousel-item"><img src="http://placeimg.com/480/360/any"></li>
-      <li class="carousel-item"><img src="http://placeimg.com/240/360/any"></li>
       <li class="carousel-item"><img src="http://placeimg.com/640/360/any"></li>
-      <li class="carousel-item"><img src="http://placeimg.com/480/360/any"></li>
-      <li class="carousel-item"><img src="http://placeimg.com/360/360/any"></li>
-      <li class="carousel-item"><img src="http://placeimg.com/320/360/any"></li>
+      <li class="carousel-item"><img src="http://placeimg.com/640/360/any"></li>
+      <li class="carousel-item"><img src="http://placeimg.com/640/360/any"></li>
+      <li class="carousel-item"><img src="http://placeimg.com/640/360/any"></li>
+      <li class="carousel-item"><img src="http://placeimg.com/640/360/any"></li>
+      <li class="carousel-item"><img src="http://placeimg.com/640/360/any"></li>
+      <li class="carousel-item"><img src="http://placeimg.com/640/360/any"></li>
+      <li class="carousel-item"><img src="http://placeimg.com/640/360/any"></li>
     </ul>
   </section>
   
   <script src="js/vendor/modernizr-3.7.1.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+  <script src="../carousel.js"></script>
+  <script>
+    var c = new Carousel('.carousel','.carousel-contents','.carousel-item');
+    c.InitUI();
+  </script>
 </body>
 
 </html>
