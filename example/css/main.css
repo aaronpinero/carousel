@@ -292,4 +292,9 @@ textarea {
     }
 }
 
+.carousel-item img {
+  display:block;
+  height:auto;
+  width:100%;
+}
 
