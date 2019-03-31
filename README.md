@@ -1,6 +1,8 @@
 Carousel
 ========
 
+See the <a href="http://aaronpinero.github.io/carousel/example/carousel.html">example</a>.
+
 A javascript for a responsive website carousel.
 
 Written by Aaron Pinero, designer/developer
