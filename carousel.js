@@ -19,12 +19,12 @@
 //  The width of the items should be a percentage of the width of the carousel.
 //	The specific percent determines the number of items displayed at one time (100% = 1 at a time; 50% = 2 at a time; etc.)
 
-function Carousel(container,element,item) {
+function Carousel(container,ribbon,item) {
 	this.container = jQuery(container); this.container.addClass('c-container');
-	this.element = jQuery(container).find(element).eq(0); this.element.addClass('c-element');
+	this.ribbon = jQuery(container).find(ribbon).eq(0); this.ribbon.addClass('c-ribbon');
 	this.items = jQuery(container).find(item); this.items.addClass('c-item');
 	this.count = this.items.length; console.log('Item Count: '+this.count);
-	this.element_width = undefined;   // width of the carousel window
+	this.container_width = undefined; // width of the carousel window
 	this.item_width = undefined;      // width of an item; will be less than or equal to the element width
 	this.visible_count = undefined;   // visible count is determined by dividing the element width by the item width
 	this.step_position = 0;
@@ -40,9 +40,9 @@ function Carousel(container,element,item) {
 	// method determines how many items in the carousel are not shown at any one time
 	this.CheckOverflow = function() {
 		if (this.count > 1) {
-			this.element_width = this.element.outerWidth(); console.log('Element width: '+this.element_width);
+			this.container_width = this.container.outerWidth(); console.log('Container width: '+this.container_width);
 			this.item_width = this.items.eq(0).outerWidth(); console.log('Item width: '+this.item_width);
-			this.visible_count = Math.round(this.element_width/this.item_width); console.log('Visible count: '+this.visible_count);
+			this.visible_count = Math.round(this.container_width/this.item_width); console.log('Visible count: '+this.visible_count);
 			if (this.visible_count != 0) {
 				this.overflow = Math.ceil(this.count / this.visible_count) - 1 ;  console.log('Overflow: '+this.overflow);
 			}
@@ -52,31 +52,31 @@ function Carousel(container,element,item) {
 	// method to create the UI elements and apply event handlers to them
 	this.InitUI = function() {
 		this.CheckOverflow();
-		if (this.UI && (this.overflow != undefined && this.overflow > 0) && (this.container.find('.carousel-nav ul .item').length == (this.overflow + 1))) {
+		if (this.UI && (this.overflow != undefined && this.overflow > 0) && (this.container.find('.c-nav ul .item').length == (this.overflow + 1))) {
 			this.SetPosition(this.step_position);
 		}
 		else {
 			if (this.UI) {
 				this.container.removeClass('UIenabled');
-				this.container.find('.carousel-nav').remove();
+				this.container.find('.c-nav').remove();
 				this.UI = false;
 			}
 			this.container.addClass('UIenabled');
-			this.container.append('<nav class="carousel-nav"><ul></ul></nav>');
+			this.container.append('<nav class="c-nav"><ul></ul></nav>');
 			var x;
-			for (x=0;x<=this.overflow;x++) { this.container.find('.carousel-nav ul').append('<li class="item">Item '+ (x+1) +'</li>'); }
+			for (x=0;x<=this.overflow;x++) { this.container.find('.c-nav ul').append('<li class="item">Page '+ (x+1) +'</li>'); }
 			this.SetIndicator();
 			this.UI = true;
 			
-			this.container.find('.carousel-nav ul').prepend('<li class="switch prev">Previous</li>');
-			this.container.find('.carousel-nav ul .prev').bind('click',{ob:this},function(e){
+			this.container.find('.c-nav ul').prepend('<li class="switch prev">Previous</li>');
+			this.container.find('.c-nav ul .prev').bind('click',{ob:this},function(e){
 				var s = e.data.ob.step_position - 1;
 				if (s < 0) { s = e.data.ob.overflow; }
 				e.data.ob.SetPosition(s);
 			});
 			
-			this.container.find('.carousel-nav ul').append('<li class="switch next">Next</li>');
-			this.container.find('.carousel-nav ul .next').bind('click',{ob:this},function(e){
+			this.container.find('.c-nav ul').append('<li class="switch next">Next</li>');
+			this.container.find('.c-nav ul .next').bind('click',{ob:this},function(e){
 				var s = e.data.ob.step_position + 1;
 				if (s > e.data.ob.overflow) { s = 0; }
 				e.data.ob.SetPosition(s);
@@ -84,7 +84,7 @@ function Carousel(container,element,item) {
 			
 			var x;
 			for (x=0;x<=this.overflow;x++) {
-				this.container.find('.carousel-nav ul .item').eq(x).bind('click',{ob:this,index:x},function(e){
+				this.container.find('.c-nav ul .item').eq(x).bind('click',{ob:this,index:x},function(e){
 					e.data.ob.SetPosition(e.data.index);
 				});
 			}
@@ -96,7 +96,7 @@ function Carousel(container,element,item) {
 		var indent = 0;
 		if (this.count < ((i + 1)*this.visible_count)) { indent = (this.count - this.visible_count) * this.item_width; }
 		else { indent = i * this.visible_count * this.item_width; }
-    this.element.css('textIndent','-'+(indent)+'px');
+    this.ribbon.css('textIndent','-'+(indent)+'px');
 		this.step_position = i;
 		this.SetIndicator();
 	};
@@ -105,10 +105,10 @@ function Carousel(container,element,item) {
 	this.SetIndicator = function() {
 		for (x=0;x<=this.overflow;x++) {
 			if (x == this.step_position){
-				this.container.find('.carousel-nav ul .item').eq(x).addClass('showing').removeClass('notshowing');
+				this.container.find('.c-nav ul .item').eq(x).addClass('showing').removeClass('notshowing');
 			}
 			else {
-				this.container.find('.carousel-nav ul .item').eq(x).addClass('notshowing').removeClass('showing');
+				this.container.find('.c-nav ul .item').eq(x).addClass('notshowing').removeClass('showing');
 			}
 		}
 	};

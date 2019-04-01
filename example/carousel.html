@@ -15,17 +15,17 @@
 <body>
   <p>Hello world! This is HTML5 Boilerplate.</p>
   
-  <section class="carousel">
-    <ul class="carousel-contents">
-      <li class="carousel-item"><img src="http://placeimg.com/640/360/any"></li>
-      <li class="carousel-item"><img src="http://placeimg.com/640/360/any"></li>
-      <li class="carousel-item"><img src="http://placeimg.com/640/360/any"></li>
-      <li class="carousel-item"><img src="http://placeimg.com/640/360/any"></li>
-      <li class="carousel-item"><img src="http://placeimg.com/640/360/any"></li>
-      <li class="carousel-item"><img src="http://placeimg.com/640/360/any"></li>
-      <li class="carousel-item"><img src="http://placeimg.com/640/360/any"></li>
-      <li class="carousel-item"><img src="http://placeimg.com/640/360/any"></li>
-      <li class="carousel-item"><img src="http://placeimg.com/640/360/any"></li>
+  <section class="carousel-container">
+    <ul class="carousel-ribbon">
+      <li class="carousel-item"><img src="http://lorempixel.com/640/480/sports/1/"></li>
+      <li class="carousel-item"><img src="http://lorempixel.com/640/480/sports/2/"></li>
+      <li class="carousel-item"><img src="http://lorempixel.com/640/480/sports/3/"></li>
+      <li class="carousel-item"><img src="http://lorempixel.com/640/480/sports/10/"></li>
+      <li class="carousel-item"><img src="http://lorempixel.com/640/480/sports/5/"></li>
+      <li class="carousel-item"><img src="http://lorempixel.com/640/480/sports/6/"></li>
+      <li class="carousel-item"><img src="http://lorempixel.com/640/480/sports/7/"></li>
+      <li class="carousel-item"><img src="http://lorempixel.com/640/480/sports/8/"></li>
+      <li class="carousel-item"><img src="http://lorempixel.com/640/480/sports/9/"></li>
     </ul>
   </section>
   
@@ -34,7 +34,7 @@
   <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
   <script src="../carousel.js"></script>
   <script>
-    var c = new Carousel('.carousel','.carousel-contents','.carousel-item');
+    var c = new Carousel('.carousel-container','.carousel-ribbon','.carousel-item');
     c.InitUI();
   </script>
 </body>
